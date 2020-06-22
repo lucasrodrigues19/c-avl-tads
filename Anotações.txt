@@ -1,0 +1,58 @@
+Anotações.txt
+ Created on: 21 de jun de 2020
+     Author: lucas.rodrigues
+
+ AVL: 
+ É uma arvore binaria com balanceamento.
+ Balanceamento: Eu não tenho um lado mais pesado que o outro, devo ter graus de diferença maximos entre: os filhos da sub arvore direita e os
+filhos da sub arvore esquerda.
+ Vantagens: Garante-se um tempo maximo de busca - que é log2(n) 
+ Ex: se eu tiver 1000 elementos em uma arvore, eu consigo pesquisar o elemento em 10 passos, 2000 elementos 11 passos. Eu dobro
+a quantidade de elementos, mas aumento só um passo.
+ Desvantagens: Ruim de implementar
+ 
+  	       5
+  	    3     8
+  	  1  4   7  9 
+  	             10 
+                   11 -> deu ruim, arvore desbalanceada: a altura dos descendentes da direita é maior que a altura dos descendentes da esquerda.
+                         comparando o nó raiz.
+                         
+A diferença de altura dos descnedentes de um nó tem que ser, no maximo:
+0 - quando não há filhos ou a altura dos filhos é a  mesma.
+1 - quando há no maximo 1 nivel da mais na sub-arvore direita.
+-1 - quando há no maximo 1 nivel a mais na sub-arvore esquerda.
+
+
+Como deixar o balanceamento correto:
+ - Calcular o fator de balanceamento de cada nó
+ - Se o fator de balanceamento superar 1 ou -1, ai aplicar as devidas rotações para poder inserir/remover corretamente o novo nó
+ 	São operações simetricas
+ 		Rotação Simples á Esquerda / Rotação Simples a Direita
+ 		Rotação Dupla á Esquerda / Rotação Dupla a Direita.
+     
+ Rotação Simples: Inserir um novo nó a esquerda da sub-arvore esquerda, ou inserir um novo nó a direita na sub-arvore a direita
+ 
+ Balancear o no: Pegar a sequencia do nó que esta desbalanceado, com filho dele e o resto da sub arvore, o filho desse no desbalanceado vira 
+raiz, enquanto o nó desbalanceado vira o filho dessa nova raiz.
+ 
+ Se esse filho do no desbalanceado ja estiver um filho, o no desbalanceado vira raiz da do filho de sua sub arvore, enquanto a sub arvore vira
+a raiz.
+  
+ Se eu tenho filhos a esquerda em UMA SUB ARVORE A DIREITA, eu garanto que esses são maiores que o valor da raiz
+ 
+ 
+ Rotação Dupla: Inserir um novo nó a direita da sub-arvore esquerda, ou, inserir um novo no a esquerda na sub-arvore a direita. 
+ 
+ 
+ Resumindo: Se alguem tem filho, o nó de cima, vai herdar os filhos do nó que precisa ser reorganizado   
+ 	
+ Se for os filhos a direita em uma rotação, vai ser filhos  a esquerda do nó pai.
+ Se for os filhos a esquerda em uma rotação, vai ser filhos a direita do nó pai.
+ 
+ Sinais diferentes: rotação dupla
+ Sinais Iguais: rotação simples
+ 
+ 
+ 
+ 
