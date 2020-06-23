@@ -134,39 +134,6 @@ int buscarElementoAVL(AVL **avl, char elemento) {
 	}
 }
 
-//char *  printAVL(AVL **avl, int level,char * aux) {
-////	char *str = (char*) malloc( (999 + 1) * sizeof(char) );
-//	int i;
-//	strcpy(aux, "");
-//	snprintf(aux, sizeof(aux), "%d", (*avl)->ele);
-//	strcat(aux, "\n");
-//
-//	for (i = 0; i < level; i++) {
-//		strcat(aux, "\t");
-//	}
-//	if ((*avl)->esq != NULL) {
-//		strcat(aux, "+=ESQ: ");
-//		strcat(aux, printAVL(&(*avl)->esq, level + 1,&aux));
-//	} else {
-//		strcat(aux, "+=ESQ: NULL");
-//
-//	}
-//	strcat(aux, "\n");
-//	for (i = 0; i < level; i++) {
-//		strcat(aux, "\t");
-//	}
-//	if ((*avl)->dir != NULL) {
-//
-//		strcat(aux, "+=DIR: ");
-//		strcat(aux, printAVL(&(*avl)->esq, level + 1,&aux));
-//	} else {
-//		strcat(aux, "+=DIR: NULL");
-//
-//	}
-//
-//	return aux;
-//}
-
 int calcularAltura(AVL **avl) {
 	if ((*avl)->dir == NULL && (*avl)->esq == NULL) { //Não tenho filho
 		return 1;
@@ -276,19 +243,15 @@ AVL* verificaBalanceamento(AVL **avl) {
 	if ((*avl)->balan >= 2 || (*avl)->balan <= -2) { //se for (1) ou  (-1) nao acontece nada
 		if ((*avl)->balan >= 2) { //vou mecher no lado direito
 			if (((*avl)->balan * (*avl)->dir->balan) > 0) { //se for positivo vou tratar as coisas da direita
-				printf("Rotacao Simples a direita\n");
 				return rotacaoSimplesDireita(&(*avl)); //inseri um novo no a direita na subarvore a direita
 			} else { //trato as
-				printf("Rotacao Dupla direita\n");
 				return rotacaoDuplaDireita(&(*avl)); //inseri um novo no a esquerda na subarvore a direita
 
 			}
 		} else if ((*avl)->balan <= -2) {
 			if (((*avl)->balan * (*avl)->esq->balan) > 0) {
-				printf("Rotacao Simples a esquerda\n");
 				return rotacaoSimplesEsquerda(&(*avl));
 			} else {
-				printf("Rotacao Dupla a esquerda\n");
 				return rotacaoDuplaEsquerda(&(*avl));
 
 			}
@@ -304,10 +267,9 @@ AVL* verificaBalanceamento(AVL **avl) {
 
 main() {
 	AVL *avl;
-	int busca,rsp;
+	int rsp;
 	char str;
 	createAVL(&avl);
-	int i = 0;
 	do{
 		fflush(stdin);
 		str = '\0';
@@ -325,10 +287,6 @@ main() {
 	}while(rsp != 0);
 
 	imprimirInOrdemAVL(&avl);
-	printf("\n");
-	avl = removerElementoAVL(&avl, 5);
-	imprimirInOrdemAVL(&avl);
 	printf("\n***Fim do programa");
-//
 	getchar();
 }
